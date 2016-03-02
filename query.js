@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $("#myform").submit(function() { // intercepts the submit event
+   // intercepts the submit event
     $.ajax({ // make an AJAX request
       type: "GET",
       url: "https://www.google.com/finance/converter?a=1&from=MYR&to=CNY", // it's the URL of your component B
@@ -14,6 +14,6 @@ $(document).ready(function() {
       }
     });
     e.preventDefault(); // avoid to execute the actual submit of the form
-  });
+  
 
 });
