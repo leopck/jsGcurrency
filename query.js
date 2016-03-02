@@ -10,6 +10,7 @@ $(document).ready(function() {
         // show the data you got from B in result div
         console.log("success");
         console.log($("#result").html(data));
+        $("#result").html(data);
       }
     });
     e.preventDefault(); // avoid to execute the actual submit of the form
