@@ -4,8 +4,9 @@ $(document).ready(function() {
    // intercepts the submit event
     $.ajax({ // make an AJAX request
       type: "GET",
-      url: "http://www.google.com/finance/converter", // it's the URL of your component
+      url: "https://www.google.com/finance/converter", // it's the URL of your component
       data: { a:"1", from:"MYR" , to:"CNY" }, // serializes the form's elements
+      headers: {"Access-Control-Allow-Origin": "http://leopck.github.io/"},
       success: function(data)
       {
         // show the data you got from B in result div
