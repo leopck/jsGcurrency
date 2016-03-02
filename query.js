@@ -13,7 +13,5 @@ $(document).ready(function() {
         $("#result").html(data);
       }
     });
-    e.preventDefault(); // avoid to execute the actual submit of the form
-  
-
+    
 });
