@@ -3,7 +3,7 @@ $(document).ready(function() {
    // intercepts the submit event
     $.ajax({ // make an AJAX request
       type: "GET",
-      url: "https://www.google.com/finance/converter?a=1&from=MYR&to=CNY", // it's the URL of your component B
+      url: "http://cors.io/?u=https://www.google.com/finance/converter?a=1&from=MYR&to=CNY", // it's the URL of your component B
       //data: $("#myform").serialize(), // serializes the form's elements
       success: function(data)
       {
