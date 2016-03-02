@@ -8,7 +8,8 @@ $(document).ready(function() {
       success: function(data)
       {
         // show the data you got from B in result div
-        $("#result").html(data);
+        console.log("success");
+        console.log($("#result").html(data));
       }
     });
     e.preventDefault(); // avoid to execute the actual submit of the form
