@@ -10,6 +10,7 @@ $(document).ready(function() {
         // show the data you got from B in result div
         console.log("success");
         console.log(data);
+        console.log(data.getElementById('currency_converter_result').getElementsByTagName('span')[0].innerHTML.replace(/[^\d.-]/g, ''))
       }
     });
     
