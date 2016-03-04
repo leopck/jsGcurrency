@@ -9,3 +9,4 @@ Simple javascript implementation to parse the currency out from the Google Finan
     e.g. localhost/index.html?from=MYR&to=CNY
 4. This will return the conversion rate from the Google Finance website.
 
+![alt tag](https://github.com/leopck/jsGcurrency/blob/readme-1/Capture.PNG)
