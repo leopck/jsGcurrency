@@ -1,0 +1,88 @@
+<head>
+  <meta charset="utf-8">
+  <title>currency xch</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="get.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<script>
+  var isIE8 = window.XDomainRequest ? true : false;
+  var invocation = createCrossDomainRequest();
+  var v_from = $_GET('from');
+  var v_to = $_GET('to');
+
+  console.log(v_from);
+  console.log(v_to);
+
+  // var url = 'https://www.google.com/finance/converter?a=1&from=MYR&to=CNY';
+  var url = 'https://www.google.com/finance/converter?a=1&from=' + $_GET('from') + '&to=' + $_GET('to');
+  function createCrossDomainRequest(url, handler) {
+    var request;
+    if (isIE8) {
+      request = new window.XDomainRequest();
+      }
+      else {
+        request = new XMLHttpRequest();
+      }
+    return request;
+  }
+
+  function callOtherDomain() {
+    if (invocation) {
+      if(isIE8) {
+        invocation.onload = outputResult;
+        invocation.open("GET", url, true);
+        invocation.send();
+      }
+      else {
+        invocation.open('GET', url, true);
+        invocation.onreadystatechange = handler;
+        invocation.send();
+      }
+    }
+    else {
+      var text = "No Invocation TookPlace At All";
+      var textNode = document.createTextNode(text);
+      var textDiv = document.getElementById("textDiv");
+      textDiv.appendChild(textNode);
+    }
+  }
+
+  function handler(evtXHR) {
+    if (invocation.readyState == 4)
+    {
+      if (invocation.status == 200) {
+      outputResult();
+      }
+      else {
+        alert("Invocation Errors Occured");
+      }
+    }
+  }
+
+  function outputResult() {
+    var response = invocation.responseText;
+    s_data = new DOMParser(response);
+    doc = s_data.parseFromString(response, "text/html");
+    nResponse = doc.getElementById('currency_converter_result').getElementsByTagName('span')[0].innerHTML.replace(/[^\d.-]/g, '');
+    // var textDiv = document.getElementById("textDiv");
+    // textDiv.innerHTML += nResponse + "<br />";
+    document.write(nResponse.toString());
+  }
+
+  callOtherDomain();
+</script>
+<!-- <form id="controlsToInvoke" action="">
+    <p>
+        <input type="button" value="Click to Invoke Another Site" onclick="callOtherDomain()" />
+    </p>
+</form> -->
+<div id="textDiv">
+
+</div>
+
+</body>
